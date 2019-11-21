@@ -24,6 +24,13 @@ public class GreetingController {
         return "main";
     }
 
-
+    @GetMapping("/almaz")
+    public String almaz(
+            @RequestParam
+                    (name="name", required=false, defaultValue="World")
+                    String name, Model model) {
+        model.addAttribute("name", name);
+        return "almaz";
+    }
 
 }
