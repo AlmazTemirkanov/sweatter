@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ccc6667-4494-4afc-b5b8-aca8a4dfd60a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GreetingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GreetingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/greeting.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/greeting.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/GreetingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/GreetingController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/main.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/main.mustache" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -40,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/main.mustache">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+              <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -68,6 +67,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -264,7 +268,7 @@
       <workItem from="1574413868402" duration="136000" />
       <workItem from="1574414057372" duration="961000" />
       <workItem from="1574415081211" duration="173000" />
-      <workItem from="1574415302427" duration="1124000" />
+      <workItem from="1574415302427" duration="1412000" />
     </task>
     <task id="LOCAL-00001" summary="change file">
       <created>1574339346808</created>
@@ -280,13 +284,20 @@
       <option name="project" value="LOCAL" />
       <updated>1574408048631</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add mustache and plagins">
+      <created>1574416515895</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1574416515895</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27257000" />
+    <option name="totallyTimeSpent" value="27545000" />
   </component>
-  <component name="TodoView">
+  <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
     </todo-panel>
@@ -298,7 +309,7 @@
   <component name="ToolWindowManager">
     <frame x="-6" y="1" width="1316" height="773" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4965197" visible="true" weight="0.28139904" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4965197" visible="true" weight="0.28139904" />
       <window_info id="Structure" order="1" sideWeight="0.5011601" side_tool="true" weight="0.2535771" />
       <window_info id="Web" order="2" sideWeight="0.50348026" side_tool="true" weight="0.28139904" />
       <window_info id="Designer" order="3" />
@@ -310,13 +321,13 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39968896" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49920508" weight="0.32970452" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49841017" weight="0.32970452" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49920508" visible="true" weight="0.32970452" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49920508" weight="0.32970452" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32970452" />
       <window_info anchor="bottom" id="Spring" order="10" sideWeight="0.49920508" weight="0.32970452" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32970452" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5007949" side_tool="true" visible="true" weight="0.32970452" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="12" sideWeight="0.50158983" side_tool="true" visible="true" weight="0.32970452" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.32970452" />
       <window_info anchor="bottom" id="Java Enterprise" order="14" sideWeight="0.49920508" weight="0.32970452" />
       <window_info anchor="bottom" id="Database Console" order="15" weight="0.32970452" />
@@ -377,7 +388,8 @@
     <MESSAGE value="change file" />
     <MESSAGE value="add page Almaz" />
     <MESSAGE value="add mustache" />
-    <option name="LAST_COMMIT_MESSAGE" value="add mustache" />
+    <MESSAGE value="add mustache and plagins" />
+    <option name="LAST_COMMIT_MESSAGE" value="add mustache and plagins" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/main.html" />
@@ -471,7 +483,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/main.mustache">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
         </state>
       </provider>
     </entry>
