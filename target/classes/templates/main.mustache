@@ -1,4 +1,12 @@
 <html>
+<style>
+    table {
+        table-layout: fixed; /* Фиксированная ширина ячеек */
+        width: 100%; /* Ширина таблицы */
+    }
+    .col1 { width: 160px; }
+    .coln { width: 60px; }
+</style>
 <body>
 <div>
 
@@ -10,17 +18,23 @@
 
 </div>
 <div>Список населенных пунктов </div>
+
 <form method="post" action="filter">
     <input type="text" name="filter">
     <button type="submit">Найти</button>
 </form>
+
+<table border="1" width="100%" cellpadding="5">
 {{#messages}}
 <div>
-    <span>{{id}}</span>
-    <span>{{text}}</span>
-    <span>{{tag}}</span>
+        <tr>
+            <th>{{id}}</th>
+            <th>{{text}}</th>
+            <th>{{tag}}</th>
+        </tr>
 </div>
 {{/messages}}
+</table>
 
 
 </body>
