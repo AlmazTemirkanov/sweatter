@@ -17,20 +17,26 @@
     </form>
 
 </div>
-<div>Список населенных пунктов </div>
+<div>Поиск по сёлам</div>
 
 <form method="post" action="filter">
     <input type="text" name="filter">
     <button type="submit">Найти</button>
 </form>
 
-<table border="1" width="100%" cellpadding="5">
+<table border="1" cellpadding="5">
+    <th>№</th> <th>Область</th> <th>Район</th> <th>Округ</th> <th>Село</th> <th>2G</th> <th>WCDMA</th> <th>LTE</th>
 {{#messages}}
-<div>
+<div> <!-- -->
         <tr>
             <th>{{id}}</th>
-            <th>{{text}}</th>
-            <th>{{tag}}</th>
+            <th>{{region}}</th>
+            <th>{{district}}</th>
+            <th>{{area}}</th>
+            <th>{{selo}}</th>
+            <th>{{voice}}</th>
+            <th>{{WCDMA}}</th>
+            <th>{{LTE}}</th>
         </tr>
 </div>
 {{/messages}}
