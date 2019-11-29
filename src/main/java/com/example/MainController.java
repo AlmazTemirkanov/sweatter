@@ -15,12 +15,12 @@ public class MainController {
     @Autowired
     private MessageRepo messageRepo;
 
-    @GetMapping("/")
+    @GetMapping("/admin")
     public String greeting(Map<String, Object> model) {
-        return "greeting";
+        return "admin";
     }
 
-    @GetMapping ("/main")
+    @GetMapping ("/")
 public String main(Map<String, Object> model){
         Iterable<Message> messages = messageRepo.findAll();
         model.put("messages", messages);
@@ -39,8 +39,6 @@ public String main(Map<String, Object> model){
         Iterable <Message> messages;
         if (filter !=null && !filter.isEmpty()){
             messages = messageRepo.findBySeloIgnoreCaseStartingWith(filter);
-
-
         } else {
             messages = messageRepo.findAll();
         }
