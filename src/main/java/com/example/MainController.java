@@ -15,17 +15,23 @@ public class MainController {
     @Autowired
     private MessageRepo messageRepo;
 
-    @GetMapping("/admin")
+    @GetMapping("/login")
     public String greeting(Map<String, Object> model) {
-        return "admin";
+        return "/login";
     }
 
     @GetMapping ("/")
-public String main(Map<String, Object> model){
-        Iterable<Message> messages = messageRepo.findAll();
-        model.put("messages", messages);
+    public String main(Map<String, Object> model){
         return "main";
     }
+
+
+    @PostMapping("/admin")
+    public String admin(Map<String, Object> model) {
+        return "/admin";
+    }
+
+
 @PostMapping ("/main")
     public String add(@RequestParam String text,@RequestParam String selo, Map<String, Object> model){
         Message message = new Message(text, selo);
