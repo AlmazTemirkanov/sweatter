@@ -42,7 +42,7 @@
 
             <input type="hidden" name="_csrf" value="{{_csrf.token}}">
         </form>
-
+    </div>
 </nav>
 
 <div class="container mt-5">
@@ -52,24 +52,24 @@
 <div class="mx-auto" style="width: 1250px;">
     <div class="input-group input-group m-5">
 
-        <form class="px-4 py-8 col-sm-5" action="/update" method="post">
+        <form class="px-4 py-8 col-sm-5" action="/add" method="post">
 
             <div class="form-group" >
                 <label for="area" >Область</label>
-                <input type="text" class="form-control" value="{{#area}}{{area}}{{/area}}" name="area" >
+                <input type="text" class="form-control"  name="area" placeholder="Область">
                 <input type="hidden" name="_csrf" value="{{_csrf.token}}">
 
             </div>
             <div class="form-group">
                 <label for="district">Район</label>
-                <input type="district" class="form-control" value="{{#district}}{{district}}{{/district}}" name="district" >
+                <input type="district" class="form-control"  name="district" placeholder="Район">
                 <input type="hidden" name="_csrf" value="{{_csrf.token}}">
 
             </div>
 
             <div class="form-group">
                 <label for="region">Округ</label>
-                <input type="region" class="form-control" value="{{#region}}{{region}}{{/region}}" name="region" >
+                <input type="region" class="form-control" name="region" placeholder="Округ">
                 <input type="hidden" name="_csrf" value="{{_csrf.token}}">
 
             </div>
@@ -77,33 +77,33 @@
 
             <div class="form-group">
                 <label for="selo">Село</label>
-                <input type="selo" class="form-control" value="{{#selo}}{{selo}}{{/selo}}" name="selo" >
+                <input type="selo" class="form-control"  name="selo" placeholder="Село">
                 <input type="hidden" name="_csrf" value="{{_csrf.token}}">
 
             </div>
 
             <div class="form-group">
                 <label for="voice">2G</label>
-                <input type="voice" class="form-control" value="{{#region}}{{voice}}{{/region}}" name="voice" >
+                <input type="voice" class="form-control"  name="voice" placeholder="2G">
                 <input type="hidden" name="_csrf" value="{{_csrf.token}}">
 
             </div>
 
             <div class="form-group">
                 <label for="WCDMA">3G</label>
-                <input type="WCDMA" class="form-control" value="{{#WCDMA}}{{WCDMA}}{{/WCDMA}}" name="WCDMA" placeholder="WCDMA">
+                <input type="WCDMA" class="form-control"  name="WCDMA" placeholder="WCDMA">
                 <input type="hidden" name="_csrf" value="{{_csrf.token}}">
 
             </div>
 
             <div class="form-group">
                 <label for="LTE">4G</label>
-                <input type="LTE" class="form-control" value="{{#LTE}}{{LTE}}{{/LTE}}" name="LTE" placeholder="LTE">
+                <input type="LTE" class="form-control" name="LTE" placeholder="LTE">
                 <input type="hidden" name="_csrf" value="{{_csrf.token}}">
 
             </div>
 
-            <button type="submit" class="btn btn-dark ">Обновить</button>
+            <button type="submit" class="btn btn-dark ">Добавить</button>
             <input type="hidden" name="_csrf" value="{{_csrf.token}}">
         </form>
     </div>
@@ -114,9 +114,6 @@
 </form>
 </div>
 </div>
-
-
-
 
 </body>
 </html>

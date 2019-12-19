@@ -2,16 +2,25 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
     <title>Administrator</title>
 </head>
-<div> Hello, admin </div>
-<a href="/">Главная страница</a>
 <body>
+
+<style>
+    table {
+        table-layout: fixed; /* Фиксированная ширина ячеек */
+        width: 100%; /* Ширина таблицы */
+    }
+    .col1 { width: 160px; }
+    .coln { width: 60px; }
+</style>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <span class="navbar-brand mb-0 h1">BEENAVIGATOR</span>
@@ -26,10 +35,23 @@
             <li class="nav-item">
                 <a class="nav-link" href="/">Роуминг</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/admin">Администратор</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Администратор
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/add">Добавить</a>
+
+                </div>
             </li>
         </ul>
+
+        <form class="mx-auto" form action="/logout" method="post">
+            <button class="btn btn-outline-dark ml-2 "  type="submit">Выйти</button>
+
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+        </form>
+
     </div>
 </nav>
 
@@ -37,73 +59,50 @@
   <span class="navbar-text ml-2">
     Поиск по сёлам
   </span>
-    <form class="form-inline" method="post" action="filter">
-        <input class="form-control ml-2" type="text" name="filter" >
+
+
+
+    <form class="form-inline" method="post" action="filterAd">
+        <input class="form-control ml-2" type="text" name="filterAd" >
         <input type="hidden" name="_csrf" value="{{_csrf.token}}">
         <button type="submit" class="btn btn-outline-dark ml-2">Найти</button>
 
     </form>
 
+    <div class="container mt-3">
+    </div>
+
     <table class="table table-striped" border="1" cellpadding="5">
         <thead class="thead-dark">
-        <th scope="col" >Область</th> <th scope="col">Район</th>
-        <th scope="col">Округ</th> <th scope="col">Село</th>
+
+        <th scope="col" >Область</th>
+        <th scope="col">Район</th>
+        <th scope="col">Округ</th>
+        <th scope="col">Село</th>
         <th scope="col">2G</th>
-        <th scope="col">3G</th> <th scope="col">4G</th>
-        <th scope="col">Delete</th>
+        <th scope="col">3G</th>
+        <th scope="col">4G</th>
+        <th scope="col">Del</th>
+        <th scope="col">Edit</th>
         </thead>
         {{#messages}}
             <div> <!-- -->
                 <tr>
-                    <!--  <th>{{id}}</th> -->
-                    <th>{{region}}</th>
-                    <th>{{district}}</th>
-                    <th>{{area}}</th>
-                    <th>{{selo}}</th>
-                    <th>{{voice}}</th>
-                    <th>{{WCDMA}}</th>
-                    <th>{{LTE}}</th>
-                    <th><a href="/delete/{{id}}">Delete</a></th>
+
+                    <th>{{#area}}{{area}}{{/area}}</th>
+                    <th>{{#district}}{{district}}{{/district}}</th>
+                    <th>{{#region}}{{region}}{{/region}}</th>
+                    <th>{{#selo}}{{selo}}{{/selo}}</th>
+                    <th>{{#voice}}{{voice}}{{/voice}}</th>
+                    <th>{{#WCDMA}}{{WCDMA}}{{/WCDMA}}</th>
+                    <th>{{#LTE}}{{LTE}}{{/LTE}}</th>
+                    <th><a href="/delete/{{id}}">Del</a></th>
+                    <th><a href="/edit/{{id}}">Edit</a></th>
 
                 </tr>
             </div>
         {{/messages}}
     </table>
-</div>
-
-<div class="container mt-5">
-    <form method="post">
-        <input type="text" placeholder="lte"/>
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
-        <input type="text" placeholder="wcdma"/>
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
-        <input type="text" placeholder="area"/>
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
-        <input type="text" placeholder="district"/>
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
-        <input type="text" placeholder="region"/>
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
-        <input type="text" placeholder="selo"/>
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
-        <input type="text" placeholder="tag"/>
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
-        <input type="text" placeholder="text"/>
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
-        <input type="text" placeholder="voice"/>
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
-        <button type="submit">Добавить </button>
-
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
-    </form>
-
-<div class="container mt-5">
-<form action="/logout" method="post">
-    <input type="submit" value="Sign Out"/>
-    <input type="hidden" name="_csrf" value="{{_csrf.token}}">
-</form>
-
-
-
 
 </div>
 </body>

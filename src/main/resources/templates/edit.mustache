@@ -1,14 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Edit file</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+    <title>Добавить</title>
 </head>
 <body>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">BEENAVIGATOR</span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link ml-4" href="/">Главная</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">Роуминг</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Администратор
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/add">Добавить</a>
+
+                </div>
+            </li>
+        </ul>
+
+        <form class="mx-auto" form action="/logout" method="post">
+            <button class="btn btn-outline-dark ml-2 "  type="submit">Выйти</button>
+
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+        </form>
+
+</nav>
+
+<div class="container mt-5">
+</div>
+
+
+<div class="mx-auto" style="width: 1250px;">
+    <div class="input-group input-group m-5">
+
+        <form class="px-4 py-8 col-sm-5" action="/update" method="post">
+
+            <div class="form-group" >
+                <label for="area" >Область</label>
+                <input type="text" class="form-control" value="{{#area}}{{area}}{{/area}}" name="area" >
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+
+            </div>
+            <div class="form-group">
+                <label for="district">Район</label>
+                <input type="district" class="form-control" value="{{#district}}{{district}}{{/district}}" name="district" >
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+
+            </div>
+
+            <div class="form-group">
+                <label for="region">Округ</label>
+                <input type="region" class="form-control" value="{{#region}}{{region}}{{/region}}" name="region" >
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+            </div>
+
+
+            <div class="form-group">
+                <label for="selo">Село</label>
+                <input type="selo" class="form-control" value="{{#selo}}{{selo}}{{/selo}}" name="selo" >
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+
+            </div>
+
+            <div class="form-group">
+                <label for="voice">2G</label>
+                <input type="voice" class="form-control" value="{{#region}}{{voice}}{{/region}}" name="voice" >
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+
+            </div>
+
+            <div class="form-group">
+                <label for="WCDMA">3G</label>
+                <input type="WCDMA" class="form-control" value="{{#WCDMA}}{{WCDMA}}{{/WCDMA}}" name="WCDMA" placeholder="WCDMA">
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+
+            </div>
+
+            <div class="form-group">
+                <label for="LTE">4G</label>
+                <input type="LTE" class="form-control" value="{{#LTE}}{{LTE}}{{/LTE}}" name="LTE" placeholder="LTE">
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+
+            </div>
+
+            <button type="submit" class="btn btn-dark ">Обновить</button>
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+        </form>
+    </div>
+</div>
+
+
+
+</form>
+</div>
+</div>
 
 
 
 
 </body>
 </html>
+

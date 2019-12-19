@@ -6,18 +6,20 @@ import javax.persistence.*;
 public class Message {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @SequenceGenerator(name="seq", initialValue=1, allocationSize=10000)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
+
     @Column (name ="ID")
     private Integer id;
 
-    @Column (name="region")
-    private String region;
+    @Column (name="area")
+    private String area;
 
     @Column (name="district")
     private String district;
 
-    @Column (name="area")
-    private String area;
+    @Column (name="region")
+    private String region;
 
     @Column (name="selo")
     private String selo;
@@ -31,13 +33,19 @@ public class Message {
     @Column (name="LTE")
     private String LTE;
 
-
-    public String getRegion() {
-        return region;
+    public Integer getId() {
+        return id;
     }
 
-    public void setRegion(String region) {
-        this.region = region;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+    public String getArea() {
+        return area;
     }
 
     public String getDistrict() {
@@ -48,12 +56,12 @@ public class Message {
         this.district = district;
     }
 
-    public String getArea() {
-        return area;
+    public String getRegion() {
+        return region;
     }
 
-    public void setArea(String area) {
-        this.area = area;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     public String getSelo() {
@@ -89,53 +97,16 @@ public class Message {
     }
 
 
+    public Message() { }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    private String text;
-    private String tag;
-    public Message(){ }
-
-//    public Message(String text, String tag) {
-//        this.text = text;
-//        this.tag = tag;
-//    }
-
-
-    public Message(String region, String district, String area, String selo, String voice, String WCDMA, String LTE, String text, String tag) {
-        this.region = region;
-        this.district = district;
+    public Message(String area, String district, String region, String selo, String voice, String WCDMA, String LTE) {
         this.area = area;
+        this.district = district;
+        this.region = region;
         this.selo = selo;
         this.voice = voice;
         this.WCDMA = WCDMA;
         this.LTE = LTE;
-        this.text = text;
-        this.tag = tag;
-    }
 
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public void setTag(String tag) {
-        this.tag = tag;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public String getTag() {
-        return tag;
-    }
-
-    public void delete(int id) {
     }
 }
