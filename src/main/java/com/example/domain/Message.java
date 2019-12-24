@@ -6,8 +6,10 @@ import javax.persistence.*;
 public class Message {
 
     @Id
+
     @SequenceGenerator(name="seq", initialValue=1, allocationSize=10000)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
+//@GeneratedValue(strategy = GenerationType.AUTO)
+     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
 
     @Column (name ="ID")
     private Integer id;
@@ -33,19 +35,19 @@ public class Message {
     @Column (name="LTE")
     private String LTE;
 
-    public Integer getId() {
-        return id;
+    public Integer getId(Integer id) {
+        return this.id;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public void setArea(String area) {
+    public void setArea(String s) {
         this.area = area;
     }
-    public String getArea() {
-        return area;
+    public String getArea(String area) {
+        return this.area;
     }
 
     public String getDistrict() {

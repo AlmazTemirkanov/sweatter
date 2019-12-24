@@ -6,7 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+
 
 @Controller
 public class MainController {
@@ -26,7 +30,12 @@ public class MainController {
 
     @GetMapping("/filter")
     public String filter(Map<String, Object> model) {
-        return "/";
+        return "redirect:/";
+    }
+
+    @GetMapping("/filterAd")
+    public String filterAd(Map<String, Object> model) {
+        return "redirect:/admin";
     }
 
 
@@ -57,7 +66,7 @@ public class MainController {
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Integer id, Map<String, Object> model) {
         messageRepo.deleteById(id);
-        return "/admin";
+        return "redirect:/admin";
     }
 
     @GetMapping("/admin")
@@ -77,12 +86,13 @@ public class MainController {
 
 
     @PostMapping ("/add")
-    public String add(@RequestParam String area, @RequestParam String district, @RequestParam String region, @RequestParam String selo,
+    public String add(@RequestParam String area, @RequestParam String district,
+                      @RequestParam String region, @RequestParam String selo,
                       @RequestParam String voice, @RequestParam String WCDMA, @RequestParam String LTE,
                        Map<String, Object> model){
         Message message = new Message(area, district, region, selo, voice, WCDMA, LTE);
         messageRepo.save(message);
-        return "/admin";
+        return "redirect:/admin";
     }
 
     @GetMapping("/edit/{id}")
@@ -90,6 +100,7 @@ public class MainController {
         Iterable <Message> messages;
         messages = messageRepo.findAllById(id);
 
+        model.addAttribute("message", messages);
         model.addAttribute("area", messages);
         model.addAttribute("district", messages);
         model.addAttribute("region", messages);
@@ -102,13 +113,14 @@ public class MainController {
     }
 
     @PostMapping ("/update")
-    public String update (@RequestParam Integer id, @RequestParam String area, @RequestParam String district, @RequestParam String region, @RequestParam String selo,
-                         @RequestParam String voice, @RequestParam String WCDMA, @RequestParam String LTE,
-                          Model model){
-        Iterable <Message> messages;
-        return "/admin";
-    }
+    public String update (@RequestParam (value = "id", required = false) Integer id,
+                          @ModelAttribute ("message") Message message){
 
+        messageRepo.findAllById(id);
+        messageRepo.save(message);
+
+        return "redirect:/admin";
+    }
 
 }
 

@@ -75,6 +75,7 @@
     <table class="table table-striped" border="1" cellpadding="5">
         <thead class="thead-dark">
 
+        <th scope="col" >ID</th>
         <th scope="col" >Область</th>
         <th scope="col">Район</th>
         <th scope="col">Округ</th>
@@ -89,6 +90,7 @@
             <div> <!-- -->
                 <tr>
 
+                    <th>{{#id}}{{id}}{{/id}}</th>
                     <th>{{#area}}{{area}}{{/area}}</th>
                     <th>{{#district}}{{district}}{{/district}}</th>
                     <th>{{#region}}{{region}}{{/region}}</th>
@@ -96,12 +98,12 @@
                     <th>{{#voice}}{{voice}}{{/voice}}</th>
                     <th>{{#WCDMA}}{{WCDMA}}{{/WCDMA}}</th>
                     <th>{{#LTE}}{{LTE}}{{/LTE}}</th>
-                    <th><a href="/delete/{{id}}">Del</a></th>
-                    <th><a href="/edit/{{id}}">Edit</a></th>
+    <th><a href="/delete/{{id}}">Del</a></th>
+    <th><a href="/edit/{{id}}">Edit</a></th>
 
-                </tr>
-            </div>
-        {{/messages}}
+    </tr>
+</div>
+{{/messages}}
     </table>
 
 </div>
