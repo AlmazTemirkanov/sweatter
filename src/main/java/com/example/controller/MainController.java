@@ -1,21 +1,23 @@
 package com.example.controller;
 
 import com.example.domain.Message;
+import com.example.domain.Prepaid;
 import com.example.model.MessageRepo;
+import com.example.model.PrepaidRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 
 @Controller
 public class MainController {
     @Autowired
     private MessageRepo messageRepo;
+
+    @Autowired
+    private PrepaidRepo prepaidRepo;
 
 
     @GetMapping ("/")
@@ -39,17 +41,17 @@ public class MainController {
     }
 
 
-//    @PostMapping ("filter")
-//    public String filter(@RequestParam String filter, Map<String, Object> model){
-//        Iterable <Message> messages;
-//        if (filter !=null && !filter.isEmpty()){
-//            messages = messageRepo.findBySeloIgnoreCaseStartingWith(filter);
-//        } else {
-//            messages = messageRepo.findAll();
-//        }
-//    model.put("messages", messages);
-//    return "main";
-//}
+    @PostMapping ("filter")
+    public String filter(@RequestParam String filter, Map<String, Object> model){
+        Iterable <Message> messages;
+        if (filter !=null && !filter.isEmpty()){
+            messages = messageRepo.findBySeloIgnoreCaseStartingWith(filter);
+        } else {
+            messages = messageRepo.findAll();
+        }
+    model.put("messages", messages);
+    return "main";
+}
 
     @PostMapping ("filterAd")
     public String filterAd(@RequestParam String filterAd, Map<String, Object> model){
@@ -97,10 +99,9 @@ public class MainController {
 
     @GetMapping("/edit/{id}")
     public String editId(@PathVariable Integer id, Model model ) {
-        Iterable <Message> messages;
-        messages = messageRepo.findAllById(id);
+        Iterable <Message> messages = messageRepo.findAllById(id);
 
-        model.addAttribute("message", messages);
+        model.addAttribute("id", messages);
         model.addAttribute("area", messages);
         model.addAttribute("district", messages);
         model.addAttribute("region", messages);
@@ -114,12 +115,32 @@ public class MainController {
 
     @PostMapping ("/update")
     public String update (@RequestParam (value = "id", required = false) Integer id,
-                          @ModelAttribute ("message") Message message){
+                          @ModelAttribute Message message){
 
         messageRepo.findAllById(id);
         messageRepo.save(message);
 
+
         return "redirect:/admin";
+    }
+
+
+    @PostMapping ("filter_prepaid")
+    public String filter_prepaid(@RequestParam String filter_prepaid, Map<String, Object> model) {
+        Iterable <Prepaid> prepaid;
+        if (filter_prepaid !=null && !filter_prepaid.isEmpty()){
+            prepaid = prepaidRepo.findByCountryIgnoreCaseStartingWith(filter_prepaid);
+        } else {
+            prepaid = prepaidRepo.findAll();
+        }
+        model.put("prepaid", prepaid);
+
+        return "/prepaid";
+    }
+
+    @GetMapping("/prepaid")
+    public String prepaid(Map<String, Object> model) {
+        return "/prepaid";
     }
 
 }

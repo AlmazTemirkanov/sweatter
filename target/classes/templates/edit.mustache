@@ -53,10 +53,11 @@
     <div class="input-group input-group m-5">
 
         <form class="px-4 py-8 col-sm-5" action="/update" method="post">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}">
 
             <div class="form-group" >
-                <label for="area" >ID</label>
-                <input type="text" class="form-control" value="{{#id}}{{id}}{{/id}}" name="area" >
+
+                <input type="hidden" class="form-control" value="{{#id}}{{id}}{{/id}}" name="id" >
                 <input type="hidden" name="_csrf" value="{{_csrf.token}}">
 
             </div>
@@ -64,7 +65,7 @@
 
             <div class="form-group" >
                 <label for="area" >Область</label>
-                <input type="text" class="form-control" value="{{#area}}{{area}}{{/area}}" name="area" >
+                <input type="area" class="form-control" value="{{#area}}{{area}}{{/area}}" name="area" >
                 <input type="hidden" name="_csrf" value="{{_csrf.token}}">
 
             </div>
@@ -98,14 +99,14 @@
 
             <div class="form-group">
                 <label for="WCDMA">3G</label>
-                <input type="WCDMA" class="form-control" value="{{#WCDMA}}{{WCDMA}}{{/WCDMA}}" name="WCDMA" placeholder="WCDMA">
+                <input type="WCDMA" class="form-control" value="{{#WCDMA}}{{WCDMA}}{{/WCDMA}}" name="WCDMA" >
                 <input type="hidden" name="_csrf" value="{{_csrf.token}}">
 
             </div>
 
             <div class="form-group">
                 <label for="LTE">4G</label>
-                <input type="LTE" class="form-control" value="{{#LTE}}{{LTE}}{{/LTE}}" name="LTE" placeholder="LTE">
+                <input type="LTE" class="form-control" value="{{#LTE}}{{LTE}}{{/LTE}}" name="LTE" >
                 <input type="hidden" name="_csrf" value="{{_csrf.token}}">
 
             </div>

@@ -8,8 +8,7 @@ public class Message {
     @Id
 
     @SequenceGenerator(name="seq", initialValue=1, allocationSize=10000)
-//@GeneratedValue(strategy = GenerationType.AUTO)
-     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
 
     @Column (name ="ID")
     private Integer id;
@@ -43,10 +42,10 @@ public class Message {
         this.id = id;
     }
 
-    public void setArea(String s) {
+    public void setArea (String area) {
         this.area = area;
     }
-    public String getArea(String area) {
+    public String getArea() {
         return this.area;
     }
 

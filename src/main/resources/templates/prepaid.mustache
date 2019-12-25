@@ -39,45 +39,46 @@
     </div>
 </nav>
 
+
 <div class="container mt-5">
   <span class="navbar-text ml-2">
-    Поиск по сёлам
+    Поиск по странам
   </span>
-    <form class="form-inline" method="post" action="filter">
-        <input class="form-control ml-2" type="text" name="filter" >
+    <form class="form-inline" method="post" action="filter_prepaid">
+        <input class="form-control ml-2" type="text" name="filter_prepaid" >
         <input type="hidden" name="_csrf" value="{{_csrf.token}}">
         <button type="submit" class="btn btn-outline-dark ml-2">Найти</button>
 
     </form>
 
-<table class="table table-striped" border="1" cellpadding="5">
-    <thead class="thead-dark">
+    <table class="table table-striped" border="1" cellpadding="5">
+        <thead class="thead-dark">
 
-    <th scope="col" >Область</th>
-    <th scope="col">Район</th>
-    <th scope="col">Округ</th>
-    <th scope="col">Село</th>
-    <th scope="col">2G</th>
-    <th scope="col">3G</th>
-    <th scope="col">4G</th>
+        <th scope="col" >Тарифная зона</th>
+        <th scope="col">Страна</th>
+        <th scope="col">Компания</th>
+        <th scope="col">Название сети</th>
+        <th scope="col">MNC</th>
+        <th scope="col">PMN</th>
+        <th scope="col">Сеть</th>
 
-    </thead>
-{{#messages}}
-<div> <!-- -->
-        <tr>
+        </thead>
+        {{#prepaid}}
+            <div> <!-- -->
+                <tr>
 
-            <th>{{#area}}{{area}}{{/area}}</th>
-            <th>{{#district}}{{district}}{{/district}}</th>
-            <th>{{#region}}{{region}}{{/region}}</th>
-            <th>{{#selo}}{{selo}}{{/selo}}</th>
-            <th>{{#voice}}{{voice}}{{/voice}}</th>
-            <th>{{#WCDMA}}{{WCDMA}}{{/WCDMA}}</th>
-            <th>{{#LTE}}{{LTE}}{{/LTE}}</th>
+                    <th>{{#tariff_zone}}{{tariff_zone}}{{/tariff_zone}}</th>
+                    <th>{{#country}}{{country}}{{/country}}</th>
+                    <th>{{#company}}{{company}}{{/company}}</th>
+                    <th>{{#name_network}}{{name_network}}{{/name_network}}</th>
+                    <th>{{#mnc}}{{mnc}}{{/mnc}}</th>
+                    <th>{{#pmn}}{{pmn}}{{/pmn}}</th>
+                    <th>{{#network}}{{network}}{{/network}}</th>
 
-        </tr>
-</div>
-{{/messages}}
-</table>
+                </tr>
+            </div>
+        {{/prepaid}}
+    </table>
 </div>
 
 
