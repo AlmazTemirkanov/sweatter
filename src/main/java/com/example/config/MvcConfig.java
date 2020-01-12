@@ -8,9 +8,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class MvcConfig implements WebMvcConfigurer {
 
     public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("main");
+        registry.addViewController("/filter").setViewName("filter");
+        registry.addViewController("/prepaid").setViewName("prepaid");
+        registry.addViewController("/postpaid").setViewName("postpaid");
+        registry.addViewController("/postpaid_filter").setViewName("postpaid_filter");
+        registry.addViewController("/prepaid_filter").setViewName("prepaid_filter");
+        registry.addViewController("/privet").setViewName("privet");
+        registry.addViewController("/privet_filter").setViewName("privet_filter");
         registry.addViewController("/login").setViewName("login");
-        registry.addViewController("/admin").setViewName("admin");
-        registry.addViewController("/edit").setViewName("edit.mustache");
     }
 
 }

@@ -1,0 +1,139 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+    <title>Administrator</title>
+</head>
+<body>
+
+<style>
+    table {
+        table-layout: fixed; /* Фиксированная ширина ячеек */
+        width: 100%; /* Ширина таблицы */
+    }
+    .col1 { width: 160px; }
+    .coln { width: 60px; }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">BEENAVIGATOR</span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link ml-4" href="/">Главная</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link ml-4" href="/privet">Привет+</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Роуминг
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/prepaid_admin">Роуминг Pre</a>
+                    <a class="dropdown-item" href="/postpaid_admin">Роуминг Post</a>
+
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Авторизация
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/add">Добавить села</a>
+                    <a class="dropdown-item" href="/add_prepaid">Добавить prepaid страны</a>
+                    <a class="dropdown-item" href="/add_postpaid">Добавить postpaid страны</a>
+
+                </div>
+            </li>
+        </ul>
+    </div>
+        <form class="mx-auto" action="/logout" method="post">
+            <button class="btn btn-outline-dark ml-2 "  type="submit">Выйти</button>
+
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+        </form>
+</nav>
+
+<div class="container mt-5">
+</div>
+<div class="mx-auto" style="width: 1250px;">
+    <div class="input-group input-group m-5">
+
+        <form class="px-4 py-8 col-sm-5" action="/update_prepaid" method="post">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+
+            <div class="form-group" >
+
+                <input type="hidden" class="form-control" value="{{#id}}{{id}}{{/id}}" name="id" >
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+
+            </div>
+
+
+            <div class="form-group" >
+                <label for="tariff_zone" >Тарифная зона</label>
+                <input type="text" class="form-control" value="{{#tariff_zone}}{{tariff_zone}}{{/tariff_zone}}" name="tariff_zone" >
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+
+            </div>
+            <div class="form-group">
+                <label for="country">Страна</label>
+                <input type="text" class="form-control" value="{{#country}}{{country}}{{/country}}" name="country" >
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+
+            </div>
+
+            <div class="form-group">
+                <label for="company">Название компании</label>
+                <input type="text" class="form-control" value="{{#company}}{{company}}{{/company}}" name="company" >
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+            </div>
+
+
+            <div class="form-group">
+                <label for="name_network">Сеть</label>
+                <input type="text" class="form-control" value="{{#name_network}}{{name_network}}{{/name_network}}" name="name_network" >
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+
+            </div>
+
+            <div class="form-group">
+                <label for="mnc">MNC</label>
+                <input type="text" class="form-control" value="{{#mnc}}{{mnc}}{{/mnc}}" name="mnc" >
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+
+            </div>
+
+            <div class="form-group">
+                <label for="pmn">PMN</label>
+                <input type="text" class="form-control" value="{{#pmn}}{{pmn}}{{/pmn}}" name="pmn" >
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+
+            </div>
+
+            <div class="form-group">
+                <label for="network">Сеть</label>
+                <input type="text" class="form-control" value="{{#network}}{{network}}{{/network}}" name="network" >
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+
+            </div>
+
+            <button type="submit" class="btn btn-dark ">Обновить</button>
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

@@ -7,7 +7,7 @@ import java.util.List;
 
 
 public interface MessageRepo extends CrudRepository <Message, Integer> {
-    List<Message> findBySeloIgnoreCaseStartingWith (String selo);
+    List<Message> findBySeloIgnoreCaseContaining (String selo);
     List<Message> findAllById (Integer id);
 }
 

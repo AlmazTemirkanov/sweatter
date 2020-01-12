@@ -5,8 +5,10 @@ import javax.persistence.*;
 @Entity
 public class Prepaid {
     @Id
-    @SequenceGenerator(name="seq", initialValue=1, allocationSize=10000)
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq")
+    @SequenceGenerator(name="seq_Pre", initialValue=10000, allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_Pre")
+//    @SequenceGenerator(name="seq", initialValue=1, allocationSize=10000)
+//    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq")
 
     private Integer id;
     private  String tariff_zone;

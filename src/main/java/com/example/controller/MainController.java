@@ -1,9 +1,7 @@
 package com.example.controller;
 
 import com.example.domain.Message;
-import com.example.domain.Prepaid;
 import com.example.model.MessageRepo;
-import com.example.model.PrepaidRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,18 +14,9 @@ public class MainController {
     @Autowired
     private MessageRepo messageRepo;
 
-    @Autowired
-    private PrepaidRepo prepaidRepo;
-
-
     @GetMapping ("/")
     public String main(Model model){
         return "main";
-    }
-
-    @GetMapping("/login")
-    public String login(Map<String, Object> model) {
-        return "/login";
     }
 
     @GetMapping("/filter")
@@ -45,7 +34,7 @@ public class MainController {
     public String filter(@RequestParam String filter, Map<String, Object> model){
         Iterable <Message> messages;
         if (filter !=null && !filter.isEmpty()){
-            messages = messageRepo.findBySeloIgnoreCaseStartingWith(filter);
+            messages = messageRepo.findBySeloIgnoreCaseContaining(filter);
         } else {
             messages = messageRepo.findAll();
         }
@@ -57,12 +46,12 @@ public class MainController {
     public String filterAd(@RequestParam String filterAd, Map<String, Object> model){
         Iterable <Message> messages;
        if (filterAd !=null && !filterAd.isEmpty()){
-           messages = messageRepo.findBySeloIgnoreCaseStartingWith(filterAd);
+           messages = messageRepo.findBySeloIgnoreCaseContaining(filterAd);
        } else {
            messages = messageRepo.findAll();
        }
         model.put("messages", messages);
-        return "/admin";
+        return "admin";
     }
 
     @GetMapping("/delete/{id}")
@@ -75,7 +64,7 @@ public class MainController {
     public String admin (Map<String, Object> model) {
         Iterable <Message> messages = messageRepo.findAll();
         model.put("message",messages);
-        return "/admin";
+        return "admin";
     }
 
 
@@ -83,18 +72,19 @@ public class MainController {
     public String add (Map<String, Object> model) {
         Iterable <Message> messages = messageRepo.findAll();
         model.put("message",messages);
-        return "/add";
+        return "add";
     }
 
 
-    @PostMapping ("/add")
-    public String add(@RequestParam String area, @RequestParam String district,
-                      @RequestParam String region, @RequestParam String selo,
-                      @RequestParam String voice, @RequestParam String WCDMA, @RequestParam String LTE,
-                       Map<String, Object> model){
+    @PostMapping ("/add_new")
+    public String add_new(@RequestParam String area, @RequestParam String district,
+                            @RequestParam String region, @RequestParam String selo,
+                            @RequestParam String voice, @RequestParam String WCDMA,
+                      @RequestParam String LTE,
+                       Model model){
         Message message = new Message(area, district, region, selo, voice, WCDMA, LTE);
         messageRepo.save(message);
-        return "redirect:/admin";
+        return "admin";
     }
 
     @GetMapping("/edit/{id}")
@@ -110,38 +100,47 @@ public class MainController {
         model.addAttribute("WCDMA", messages);
         model.addAttribute("LTE", messages);
 
-        return "/edit";
+        return "edit";
     }
 
     @PostMapping ("/update")
     public String update (@RequestParam (value = "id", required = false) Integer id,
                           @ModelAttribute Message message){
-
         messageRepo.findAllById(id);
         messageRepo.save(message);
 
-
-        return "redirect:/admin";
+        return "admin";
     }
 
-
-    @PostMapping ("filter_prepaid")
-    public String filter_prepaid(@RequestParam String filter_prepaid, Map<String, Object> model) {
-        Iterable <Prepaid> prepaid;
-        if (filter_prepaid !=null && !filter_prepaid.isEmpty()){
-            prepaid = prepaidRepo.findByCountryIgnoreCaseStartingWith(filter_prepaid);
-        } else {
-            prepaid = prepaidRepo.findAll();
-        }
-        model.put("prepaid", prepaid);
-
-        return "/prepaid";
-    }
 
     @GetMapping("/prepaid")
     public String prepaid(Map<String, Object> model) {
-        return "/prepaid";
+        return "prepaid";
     }
 
+    @GetMapping("/postpaid")
+    public String postpaid (Map<String, Object> model) {
+        return "postpaid";
+    }
+
+    @GetMapping("/privet")
+    public String privet (Map<String, Object> model) {
+        return "privet";
+    }
+
+
+//    @ResponseStatus(HttpStatus.NOT_FOUND)
+//    public class NotFoundException extends RuntimeException {
+//
+//        public NotFoundException(int id) {
+//            super("Country with id=" + id + " not found");
+//        }
+//
+//        public NotFoundException(String name) {
+//            super("Country with name=" + name + " not found");
+//        }
+//    } Exception for future
+
 }
+
 

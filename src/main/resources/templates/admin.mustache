@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -33,26 +32,39 @@
                 <a class="nav-link ml-4" href="/">Главная</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/">Роуминг</a>
+                <a class="nav-link ml-4" href="/privet">Привет+</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Администратор
+                    Роуминг
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/add">Добавить</a>
+                    <a class="dropdown-item" href="/prepaid_admin">Роуминг Pre</a>
+                    <a class="dropdown-item" href="/postpaid_admin">Роуминг Post</a>
+
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Авторизация
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/add">Добавить села</a>
+                    <a class="dropdown-item" href="/add_prepaid">Добавить prepaid страны</a>
+                    <a class="dropdown-item" href="/add_postpaid">Добавить postpaid страны</a>
 
                 </div>
             </li>
         </ul>
-
-        <form class="mx-auto" form action="/logout" method="post">
+    </div>
+        <form class="mx-auto" action="/logout" method="post">
             <button class="btn btn-outline-dark ml-2 "  type="submit">Выйти</button>
 
             <input type="hidden" name="_csrf" value="{{_csrf.token}}">
         </form>
 
-    </div>
+
 </nav>
 
 <div class="container mt-5">
@@ -96,8 +108,8 @@
                     <th>{{#voice}}{{voice}}{{/voice}}</th>
                     <th>{{#WCDMA}}{{WCDMA}}{{/WCDMA}}</th>
                     <th>{{#LTE}}{{LTE}}{{/LTE}}</th>
-    <th><a href="/delete/{{id}}">Del</a></th>
-    <th><a href="/edit/{{id}}">Edit</a></th>
+                    <th><a href="/delete/{{id}}">Del</a></th>
+                    <th><a href="/edit/{{id}}">Edit</a></th>
 
     </tr>
 </div>

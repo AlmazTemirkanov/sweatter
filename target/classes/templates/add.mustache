@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -9,9 +8,18 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 
-    <title>Добавить</title>
+    <title>Add</title>
 </head>
 <body>
+
+<style>
+    table {
+        table-layout: fixed; /* Фиксированная ширина ячеек */
+        width: 100%; /* Ширина таблицы */
+    }
+    .col1 { width: 160px; }
+    .coln { width: 60px; }
+</style>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <span class="navbar-brand mb-0 h1">BEENAVIGATOR</span>
@@ -24,26 +32,39 @@
                 <a class="nav-link ml-4" href="/">Главная</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/">Роуминг</a>
+                <a class="nav-link ml-4" href="/privet">Привет+</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Администратор
+                    Роуминг
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/add">Добавить</a>
+                    <a class="dropdown-item" href="/prepaid_admin">Роуминг Pre</a>
+                    <a class="dropdown-item" href="/postpaid_admin">Роуминг Post</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Авторизация
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/add">Добавить села</a>
+                    <a class="dropdown-item" href="/add_prepaid">Добавить prepaid страны</a>
+                    <a class="dropdown-item" href="/add_postpaid">Добавить postpaid страны</a>
 
                 </div>
             </li>
         </ul>
+    </div>
 
-        <form class="mx-auto" form action="/logout" method="post">
+        <form class="mx-auto" action="/logout" method="post">
             <button class="btn btn-outline-dark ml-2 "  type="submit">Выйти</button>
 
             <input type="hidden" name="_csrf" value="{{_csrf.token}}">
         </form>
-    </div>
 </nav>
+
 
 <div class="container mt-5">
 </div>
@@ -52,7 +73,7 @@
 <div class="mx-auto" style="width: 1250px;">
     <div class="input-group input-group m-5">
 
-        <form class="px-4 py-8 col-sm-5" action="/add" method="post">
+        <form class="px-4 py-8 col-sm-5" action="/add_new" method="post">
 
             <div class="form-group" >
                 <label for="area" >Область</label>
@@ -62,14 +83,14 @@
             </div>
             <div class="form-group">
                 <label for="district">Район</label>
-                <input type="district" class="form-control"  name="district" placeholder="Район">
+                <input type="text" class="form-control"  name="district" placeholder="Район">
                 <input type="hidden" name="_csrf" value="{{_csrf.token}}">
 
             </div>
 
             <div class="form-group">
                 <label for="region">Округ</label>
-                <input type="region" class="form-control" name="region" placeholder="Округ">
+                <input type="text" class="form-control" name="region" placeholder="Округ">
                 <input type="hidden" name="_csrf" value="{{_csrf.token}}">
 
             </div>
@@ -77,28 +98,28 @@
 
             <div class="form-group">
                 <label for="selo">Село</label>
-                <input type="selo" class="form-control"  name="selo" placeholder="Село">
+                <input type="text" class="form-control"  name="selo" placeholder="Село">
                 <input type="hidden" name="_csrf" value="{{_csrf.token}}">
 
             </div>
 
             <div class="form-group">
                 <label for="voice">2G</label>
-                <input type="voice" class="form-control"  name="voice" placeholder="2G">
+                <input type="text" class="form-control"  name="voice" placeholder="2G">
                 <input type="hidden" name="_csrf" value="{{_csrf.token}}">
 
             </div>
 
             <div class="form-group">
                 <label for="WCDMA">3G</label>
-                <input type="WCDMA" class="form-control"  name="WCDMA" placeholder="WCDMA">
+                <input type="text" class="form-control"  name="WCDMA" placeholder="WCDMA">
                 <input type="hidden" name="_csrf" value="{{_csrf.token}}">
 
             </div>
 
             <div class="form-group">
                 <label for="LTE">4G</label>
-                <input type="LTE" class="form-control" name="LTE" placeholder="LTE">
+                <input type="text" class="form-control" name="LTE" placeholder="LTE">
                 <input type="hidden" name="_csrf" value="{{_csrf.token}}">
 
             </div>
@@ -107,12 +128,6 @@
             <input type="hidden" name="_csrf" value="{{_csrf.token}}">
         </form>
     </div>
-</div>
-
-
-
-</form>
-</div>
 </div>
 
 </body>

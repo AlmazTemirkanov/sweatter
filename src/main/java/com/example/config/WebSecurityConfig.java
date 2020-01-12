@@ -17,7 +17,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/filter").permitAll()
+                .antMatchers("/", "/filter", "/prepaid", "/postpaid",
+                                        "/filter_postpaid", "/filter_prepaid", "/privet",
+                                        "/filter_privet").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -34,14 +36,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         UserDetails user =
                 User.withDefaultPasswordEncoder()
                         .username("admin")
-                        .password("admin")
+                        .password("3edcVFR$")
                         .roles("USER")
                         .build();
         UserDetails user2 =
                 User.withDefaultPasswordEncoder()
                         .username("admin1")
-                        .password("admin1")
-                        .roles("USER")
+                        .password("admin13edcVFR$")
+                        .roles("USER2")
                         .build();
 
         return new InMemoryUserDetailsManager(user, user2);

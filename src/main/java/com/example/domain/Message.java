@@ -6,11 +6,20 @@ import javax.persistence.*;
 public class Message {
 
     @Id
-
-    @SequenceGenerator(name="seq", initialValue=1, allocationSize=10000)
+    @SequenceGenerator(name="seq", initialValue=10000, allocationSize=1)
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
 
-    @Column (name ="ID")
+
+//    @GeneratedValue(strategy=GenerationType.IDENTITY) SEQUENCE
+//    @SequenceGenerator(name = "id", sequenceName = "id")
+//    @GeneratedValue(strategy = GenerationType.AUTO, generator="id")
+//    @Id
+//    @GeneratedValue(strategy=GenerationType.AUTO)
+
+//    @GeneratedValue(strategy = GenerationType.AUTO, generator = "generator")
+//    @SequenceGenerator(name="generator", sequenceName="DB_SEQ_NAME")
+
+    @Column (name="ID")
     private Integer id;
 
     @Column (name="area")
@@ -96,7 +105,6 @@ public class Message {
     public void setLTE(String LTE) {
         this.LTE = LTE;
     }
-
 
     public Message() { }
 
