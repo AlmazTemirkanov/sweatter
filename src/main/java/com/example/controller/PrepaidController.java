@@ -20,7 +20,7 @@ public class PrepaidController {
     public String filter_prepaid(@RequestParam String filter_prepaid, Map<String, Object> model) {
         Iterable <Prepaid> prepaid;
         if (filter_prepaid !=null && !filter_prepaid.isEmpty()){
-            prepaid = prepaidRepo.findByCountryIgnoreCaseStartingWith(filter_prepaid);
+            prepaid = prepaidRepo.findBycountryIgnoreCaseContaining(filter_prepaid);
         } else {
             prepaid = prepaidRepo.findAll();
         }
@@ -40,12 +40,19 @@ public class PrepaidController {
     public String filter_prepaid_admin(@RequestParam String filter_prepaid_admin, Map<String, Object> model) {
         Iterable <Prepaid> prepaid;
         if (filter_prepaid_admin !=null && !filter_prepaid_admin.isEmpty()){
-            prepaid = prepaidRepo.findByCountryIgnoreCaseStartingWith(filter_prepaid_admin);
+            prepaid = prepaidRepo.findBycountryIgnoreCaseContaining(filter_prepaid_admin);
         } else {
             prepaid = prepaidRepo.findAll();
         }
         model.put("prepaid", prepaid);
 
+        return "prepaid_admin";
+    }
+
+    @GetMapping("/filter_prepaid_admin")
+    public String filter_prepaid_admin (Map<String, Object> model) {
+        Iterable <Prepaid> prepaid = prepaidRepo.findAll();
+        model.put("message", prepaid);
         return "prepaid_admin";
     }
 

@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface PrivetRepo extends CrudRepository <Privet, Integer> {
   List <Privet> findByAuthorIgnoreCaseContaining (String author);
+  List <Privet> findByTitleIgnoreCaseContaining (String title);
+
 }

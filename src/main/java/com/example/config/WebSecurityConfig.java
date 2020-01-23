@@ -19,7 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "/filter", "/prepaid", "/postpaid",
                                         "/filter_postpaid", "/filter_prepaid", "/privet",
-                                        "/filter_privet").permitAll()
+                                        "/filter_privet", "/content", "/filter_content", "/vip").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

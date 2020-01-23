@@ -9,7 +9,10 @@ com\example\controller\MainController.class
 com\example\controller\PostpaidController.class
 com\example\domain\Prepaid.class
 com\example\domain\Message.class
+com\example\controller\ContentController.class
 com\example\model\PrepaidRepo.class
 com\example\config\MvcConfig.class
+com\example\model\ContentRepo.class
+com\example\domain\Content.class
 com\example\model\PrivetRepo.class
 com\example\controller\PrepaidController.class

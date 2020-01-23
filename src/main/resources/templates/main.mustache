@@ -1,5 +1,8 @@
 <html>
 <head>
+
+
+
     <meta charset="UTF-8">
     <title>BeeNavigator</title>
 
@@ -21,7 +24,7 @@
 <body>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <span class="navbar-brand mb-0 h1">BEENAVIGATOR</span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -30,6 +33,12 @@
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link ml-4" href="/">Главная</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link ml-4" href="/content">Контент провайдеры</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link ml-4" href="/vip">Проверка номеров</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link ml-4" href="/privet">Привет+</a>
@@ -51,15 +60,15 @@
     </div>
 </nav>
 
+
 <div class="container mt-5">
-  <span class="navbar-text ml-2">
+  <span class="navbar-text ml-2 pt-5">
     Поиск по сёлам
   </span>
     <form class="form-inline" method="post" action="filter">
         <input class="form-control ml-2" type="text" name="filter" >
         <input type="hidden" name="_csrf" value="{{_csrf.token}}">
         <button type="submit" class="btn btn-outline-dark ml-2">Найти</button>
-
     </form>
 
 <table class="table table-striped" border="1" cellpadding="5">
@@ -94,7 +103,18 @@
 
 
 
+
+
+
 </body>
 
 </html>
 
+<footer>
+    <div class="navbar ">
+        <div class="navbar-light bg-light fixed-bottom">
+            <span class="navbar-brand mb-3	"></span>
+            <p class="text-center">Beeline © 2020</p>
+        </div>
+    </div>
+</footer>

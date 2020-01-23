@@ -112,7 +112,6 @@ public class MainController {
         return "admin";
     }
 
-
     @GetMapping("/prepaid")
     public String prepaid(Map<String, Object> model) {
         return "prepaid";
@@ -126,6 +125,17 @@ public class MainController {
     @GetMapping("/privet")
     public String privet (Map<String, Object> model) {
         return "privet";
+    }
+
+
+    @GetMapping("/content")
+    public String content (Map<String, Object> model) {
+        return "content";
+    }
+
+    @GetMapping("/vip")
+    public String vip(Map<String, Object> model) {
+        return "vip";
     }
 
 

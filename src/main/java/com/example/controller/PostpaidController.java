@@ -20,13 +20,12 @@ public class PostpaidController {
     public String filter_postpaid (@RequestParam String filter_postpaid, Map<String, Object> model ) {
         Iterable <Postpaid> postpaid;
         if (filter_postpaid !=null && !filter_postpaid.isEmpty()){
-            postpaid = postpaidRepo.findByCountryIgnoreCaseStartingWith(filter_postpaid);
+            postpaid = postpaidRepo.findBycountryIgnoreCaseContaining(filter_postpaid);
         } else {
             postpaid = postpaidRepo.findAll();
         }
         model.put("postpaid", postpaid);
         return "postpaid";
-
 
     }
 
@@ -37,11 +36,18 @@ public class PostpaidController {
         return "postpaid_admin";
     }
 
+    @GetMapping("/filter_postpaid_admin")
+    public String filter_postpaid_admin (Map<String, Object> model) {
+        Iterable <Postpaid> postpaid = postpaidRepo.findAll();
+        model.put("message", postpaid);
+        return "redirect:/postpaid_admin";
+    }
+
     @PostMapping("filter_postpaid_admin")
     public String filter_postpaid_admin(@RequestParam String filter_postpaid_admin, Map<String, Object> model) {
         Iterable <Postpaid> postpaid;
         if (filter_postpaid_admin !=null && !filter_postpaid_admin.isEmpty()){
-            postpaid = postpaidRepo.findByCountryIgnoreCaseStartingWith(filter_postpaid_admin);
+            postpaid = postpaidRepo.findBycountryIgnoreCaseContaining(filter_postpaid_admin);
         } else {
             postpaid = postpaidRepo.findAll();
         }
@@ -96,4 +102,6 @@ public class PostpaidController {
         postpaidRepo.save(postpaid);
         return "postpaid_admin";
     }
+
+
 }

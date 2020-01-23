@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface PostpaidRepo extends CrudRepository <Postpaid, Integer>  {
 
-    List <Postpaid> findByCountryIgnoreCaseStartingWith (String country);
+    List <Postpaid> findBycountryIgnoreCaseContaining (String country);
     List<Postpaid> findAllById (Integer id);
 }
