@@ -16,42 +16,31 @@ public class PostpaidController {
     @Autowired
     private PostpaidRepo postpaidRepo;
 
-    @PostMapping("filter_postpaid")
-    public String filter_postpaid (@RequestParam String filter_postpaid, Map<String, Object> model ) {
-        Iterable <Postpaid> postpaid;
+    @GetMapping("/postpaid")
+    public String filter_postpaid (@RequestParam (required = false) String filter_postpaid, Model model ) {
+        Iterable <Postpaid> postpaid = null;
         if (filter_postpaid !=null && !filter_postpaid.isEmpty()){
             postpaid = postpaidRepo.findBycountryIgnoreCaseContaining(filter_postpaid);
         } else {
-            postpaid = postpaidRepo.findAll();
+            postpaidRepo.findAll();
         }
-        model.put("postpaid", postpaid);
+        model.addAttribute("postpaid", postpaid);
+        model.addAttribute("filter_postpaid", filter_postpaid);
         return "postpaid";
 
     }
 
+
     @GetMapping("/postpaid_admin")
-    public String postpaid_admin (Map<String, Object> model) {
-        Iterable <Postpaid> postpaid = postpaidRepo.findAll();
-        model.put("message", postpaid);
-        return "postpaid_admin";
-    }
-
-    @GetMapping("/filter_postpaid_admin")
-    public String filter_postpaid_admin (Map<String, Object> model) {
-        Iterable <Postpaid> postpaid = postpaidRepo.findAll();
-        model.put("message", postpaid);
-        return "redirect:/postpaid_admin";
-    }
-
-    @PostMapping("filter_postpaid_admin")
-    public String filter_postpaid_admin(@RequestParam String filter_postpaid_admin, Map<String, Object> model) {
-        Iterable <Postpaid> postpaid;
+    public String filter_postpaid_admin(@RequestParam(required = false) String filter_postpaid_admin, Model model) {
+        Iterable <Postpaid> postpaid=null;
         if (filter_postpaid_admin !=null && !filter_postpaid_admin.isEmpty()){
             postpaid = postpaidRepo.findBycountryIgnoreCaseContaining(filter_postpaid_admin);
         } else {
-            postpaid = postpaidRepo.findAll();
+            postpaidRepo.findAll();
         }
-        model.put("postpaid", postpaid);
+        model.addAttribute("postpaid", postpaid);
+        model.addAttribute("filter_postpaid_admin", filter_postpaid_admin);
 
         return "postpaid_admin";
     }

@@ -1,0 +1,45 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>BeeNavigator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <title>Регистрация пользователей</title>
+</head>
+
+<body>
+<div class="mx-auto" style="width: 350px;">
+    <div class="input-group input-group m-5">
+        <form class="px-4 py-3" action="/registration" method="post">
+            <div class="form-group" >
+                <label for="username" >Логин для регистрации</label>
+                <input type="text" class="form-control"  name="username" placeholder="Login">
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                <input type="password" class="form-control" name="password" placeholder="Password">
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+
+            </div>
+            <button type="submit" class="btn btn-dark">Сохранить</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <div class="navbar ">
+        <div class="navbar-light bg-light fixed-bottom">
+            <span class="navbar-brand mb-3	"></span>
+            <p class="text-center">Beeline © 2020</p>
+        </div>
+    </div>
+</footer>
+
+<a class="nav-link ml-4" href="/user">Список пользователей</a>
+
+</body>
+</html>

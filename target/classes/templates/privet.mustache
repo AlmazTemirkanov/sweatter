@@ -32,14 +32,33 @@
                 <a class="nav-link ml-4" href="/">Главная</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link ml-4" href="/content">Контент провайдеры</a>
+                <a class="nav-link ml-4" href="/map">Карта</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link ml-4" href="/vip">Проверка номеров</a>
+                <a class="nav-link ml-4" href="/content">Провайдеры</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link ml-4" href="/vip">VIP</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link ml-4" href="/sms">SMS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link ml-4" href="/pull">Пулы</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link ml-4" href="/privet">Привет+</a>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    CRM
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/crm">SR Prepaid</a>
+                    <a class="dropdown-item" href="/crmpost">SR Postpaid</a>
+                </div>
+            </li>
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Роуминг
@@ -47,26 +66,34 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/prepaid">Роуминг Pre</a>
                     <a class="dropdown-item" href="/postpaid">Роуминг Post</a>
-
                 </div>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="/admin">Авторизация</a>
-            </li>
         </ul>
     </div>
 </nav>
 
 <div class="container mt-5 pt-5">
 
-
-    <form class="form-inline" method="post" action="/filter_privet">
+<span class="navbar-text ml-3">
+    Поиск исполнителям
+  </span>
+    <form class="form-inline" method="get" action="/privet">
 
         <div class="container mt-2">
-            <input class="form-control ml-2" type="text" name="filter_privet" >
-            <input type="hidden" name="_csrf" value="{{_csrf.token}}">
-            <button type="submit" class="btn btn-outline-dark ml-2">Найти</button>
+            <input class="form-control ml-2" type="text" name="filter_privet" value="{{#filter_privet}}{{filter_privet}}{{/filter_privet}}" placeholder="Исполнитель">
+            <button type="submit" class="btn btn-outline-dark">Найти</button>
+        </div>
+
+    </form>
+    <span class="navbar-text ml-3">
+    Поиск названию мелодии
+  </span>
+    <form class="form-inline" method="get" action="/filter_title">
+
+        <div class="container mt-2">
+            <input class="form-control ml-2" type="text" name="filter_privet_title" value="{{#filter_privet_title}}{{filter_privet_title}}{{/filter_privet_title}}" placeholder="Название">
+            <button type="submit" class="btn btn-outline-dark">Найти</button>
         </div>
 
     </form>
@@ -97,17 +124,8 @@
             </div>
         {{/privet}}
     </table>
+
 </div>
-
-
-<footer>
-    <div class="navbar ">
-        <div class="navbar-light bg-light fixed-bottom">
-            <span class="navbar-brand mb-3  "></span>
-            <p class="text-center">Beeline © 2020</p>
-        </div>
-    </div>
-</footer>
 
 </body>
 

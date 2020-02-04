@@ -13,14 +13,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 </head>
-<style>
-    table {
-        table-layout: fixed; /* Фиксированная ширина ячеек */
-        width: 100%; /* Ширина таблицы */
-    }
-    .col1 { width: 160px; }
-    .coln { width: 60px; }
-</style>
+
 <body>
 
 
@@ -35,14 +28,33 @@
                 <a class="nav-link ml-4" href="/">Главная</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link ml-4" href="/content">Контент провайдеры</a>
+                <a class="nav-link ml-4" href="/map">Карта</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link ml-4" href="/vip">Проверка номеров</a>
+                <a class="nav-link ml-4" href="/content">Провайдеры</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link ml-4" href="/vip">VIP</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link ml-4" href="/sms">SMS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link ml-4" href="/pull">Пулы</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link ml-4" href="/privet">Привет+</a>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    CRM
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/crm">SR Prepaid</a>
+                    <a class="dropdown-item" href="/crmpost">SR Postpaid</a>
+                </div>
+            </li>
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Роуминг
@@ -53,24 +65,25 @@
                 </div>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="/admin">Авторизация</a>
-            </li>
         </ul>
     </div>
 </nav>
-
 
 <div class="container mt-5">
     <span class="navbar-text ml-2 pt-5">
     Поиск номерам
   </span>
 
-    <form class="form-inline" method="post" action="filter_content">
-        <input class="form-control ml-2" type="text" name="filter_content" >
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+    <form class="form-inline" method="get" action="/content">
+        <input class="form-control ml-2" type="text" name="filter_content" placeholder="1234" value="{{#filter_content}}{{filter_content}}{{/filter_content}}" >
         <button type="submit" class="btn btn-outline-dark ml-2">Найти</button>
-
+    </form>
+    <span class="navbar-text ml-2">
+    Поиск номерам
+  </span>
+    <form class="form-inline" method="get" action="/content_name">
+        <input class="form-control ml-2" type="text" name="filter_content_name" placeholder="Название" value="{{#filter_content_name}}{{filter_content_name}}{{/filter_content_name}}" >
+        <button type="submit" class="btn btn-outline-dark ml-2">Найти</button>
     </form>
 
     <table class="table table-striped" border="1" cellpadding="5">
@@ -106,12 +119,3 @@
 </body>
 
 </html>
-
-<footer>
-    <div class="navbar ">
-        <div class="navbar-light bg-light fixed-bottom">
-            <span class="navbar-brand mb-3	"></span>
-            <p class="text-center">Beeline © 2020</p>
-        </div>
-    </div>
-</footer>

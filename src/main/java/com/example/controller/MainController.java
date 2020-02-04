@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.domain.Message;
 import com.example.model.MessageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,41 +19,40 @@ public class MainController {
     public String main(Model model){
         return "main";
     }
-
-    @GetMapping("/filter")
-    public String filter(Map<String, Object> model) {
-        return "redirect:/";
-    }
-
-    @GetMapping("/filterAd")
-    public String filterAd(Map<String, Object> model) {
-        return "redirect:/admin";
-    }
-
-
-    @PostMapping ("filter")
-    public String filter(@RequestParam String filter, Map<String, Object> model){
-        Iterable <Message> messages;
+    @GetMapping("/map")
+    public String map (@RequestParam (required = false) String filter, Model model) {
+        Iterable <Message> messages = null;
         if (filter !=null && !filter.isEmpty()){
-            messages = messageRepo.findBySeloIgnoreCaseContaining(filter);
+           messages = messageRepo.findBySeloIgnoreCaseContaining(filter);
         } else {
-            messages = messageRepo.findAll();
+            messageRepo.findAll();
         }
-    model.put("messages", messages);
-    return "main";
-}
+        model.addAttribute("messages", messages);
+        model.addAttribute("filter", filter);
 
-    @PostMapping ("filterAd")
-    public String filterAd(@RequestParam String filterAd, Map<String, Object> model){
-        Iterable <Message> messages;
-       if (filterAd !=null && !filterAd.isEmpty()){
-           messages = messageRepo.findBySeloIgnoreCaseContaining(filterAd);
-       } else {
-           messages = messageRepo.findAll();
-       }
-        model.put("messages", messages);
+        return "map";
+    }
+
+
+    @GetMapping("/admin")
+    public String admin (@RequestParam (required = false) String filterAd, Model model) {
+        Iterable <Message> messages = null;
+        if (filterAd !=null && !filterAd.isEmpty()){
+            messages = messageRepo.findBySeloIgnoreCaseContaining(filterAd);
+        } else {
+            messageRepo.findAll();
+        }
+        model.addAttribute("messages", messages);
+        model.addAttribute("filterAd", filterAd);
+
         return "admin";
     }
+
+    @GetMapping ("/calc")
+    public String calc(Model model){
+        return "calc";
+    }
+
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Integer id, Map<String, Object> model) {
@@ -60,12 +60,6 @@ public class MainController {
         return "redirect:/admin";
     }
 
-    @GetMapping("/admin")
-    public String admin (Map<String, Object> model) {
-        Iterable <Message> messages = messageRepo.findAll();
-        model.put("message",messages);
-        return "admin";
-    }
 
 
     @GetMapping("/add")
@@ -112,26 +106,6 @@ public class MainController {
         return "admin";
     }
 
-    @GetMapping("/prepaid")
-    public String prepaid(Map<String, Object> model) {
-        return "prepaid";
-    }
-
-    @GetMapping("/postpaid")
-    public String postpaid (Map<String, Object> model) {
-        return "postpaid";
-    }
-
-    @GetMapping("/privet")
-    public String privet (Map<String, Object> model) {
-        return "privet";
-    }
-
-
-    @GetMapping("/content")
-    public String content (Map<String, Object> model) {
-        return "content";
-    }
 
     @GetMapping("/vip")
     public String vip(Map<String, Object> model) {
@@ -139,17 +113,20 @@ public class MainController {
     }
 
 
+
 //    @ResponseStatus(HttpStatus.NOT_FOUND)
 //    public class NotFoundException extends RuntimeException {
 //
 //        public NotFoundException(int id) {
-//            super("Country with id=" + id + " not found");
+//            super("Country with id not found");
 //        }
 //
 //        public NotFoundException(String name) {
-//            super("Country with name=" + name + " not found");
+//            super("Country with name= not found");
 //        }
-//    } Exception for future
+//    }
+
+
 
 }
 

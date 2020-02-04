@@ -15,39 +15,46 @@ public class ContentController {
     @Autowired
     private ContentRepo contentRepo;
 
-    @PostMapping("filter_content")
-    public String filter_content (@RequestParam String filter_content, Map<String, Object> model ) {
-        Iterable <Content> content;
+    @GetMapping("/content")
+    public String filter_content (@RequestParam (required = false) String filter_content, Model model ) {
+        Iterable <Content> content = null;
         if (filter_content !=null && !filter_content.isEmpty()){
             content = contentRepo.findByNumberIgnoreCaseContaining(filter_content);
         } else {
-            content = contentRepo.findAll();
+            contentRepo.findAll();
         }
-        model.put("content", content);
+        model.addAttribute("content", content);
+        model.addAttribute("filter_content", filter_content);
         return "content";
     }
 
-    @PostMapping("filter_content_admin")
-    public String filter_content_admin (@RequestParam String filter_content_admin, Map<String, Object> model ) {
-        Iterable <Content> content;
+    @GetMapping("/content_admin")
+    public String filter_content_admin (@RequestParam (required = false) String filter_content_admin, Model model ) {
+        Iterable <Content> content = null;
         if (filter_content_admin !=null && !filter_content_admin.isEmpty()){
             content = contentRepo.findByNumberIgnoreCaseContaining(filter_content_admin);
         } else {
-            content = contentRepo.findAll();
+            contentRepo.findAll();
         }
-        model.put("content", content);
+        model.addAttribute("content", content);
+        model.addAttribute("filter_content_admin", filter_content_admin);
         return "content_admin";
     }
 
-    @GetMapping("/filter_content")
-    public String content (Map<String, Object> model) {
+    @GetMapping("/content_name")
+    public String filter_content_name (@RequestParam (required = false) String filter_content_name, Model model ) {
+        Iterable <Content> content = null;
+        if (filter_content_name !=null && !filter_content_name.isEmpty()){
+            content = contentRepo.findByServiceIgnoreCaseContaining(filter_content_name);
+        } else {
+            contentRepo.findAll();
+        }
+        model.addAttribute("content", content);
+        model.addAttribute("filter_content_name", filter_content_name);
         return "content";
     }
 
-    @GetMapping("/filter_content_admin")
-    public String filter_content_admin (Map<String, Object> model) {
-        return "content";
-    }
+
 
     @GetMapping("/add_content")
     public String add_content (Map<String, Object> model) {
@@ -66,10 +73,6 @@ public class ContentController {
         return "content_admin";
     }
 
-    @GetMapping ("/content_admin")
-    public String content_admin (Model model){
-        return "content_admin";
-    }
 
     @GetMapping("/delete_content/{id}")
     public String delete_content(@PathVariable Integer id, Map<String, Object> model) {

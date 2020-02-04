@@ -32,15 +32,25 @@
                 <a class="nav-link ml-4" href="/">Главная</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link ml-4" href="/content_admin">Контент провайдеры</a>
+                <a class="nav-link ml-4" href="/admin">Карта</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link ml-4" href="/vip">Проверка номеров</a>
+                <a class="nav-link ml-4" href="/content_admin">Провайдеры</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link ml-4" href="/privet">Привет+</a>
+                <a class="nav-link ml-4" href="/sms_admin">SMS</a>
             </li>
 
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    CRM
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/crm_admin">CRM SR Prepaid</a>
+                    <a class="dropdown-item" href="/crmpost_admin">CRM SR Postpaid</a>
+
+                </div>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Роуминг
@@ -54,25 +64,25 @@
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Авторизация
+                    Админ
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/add">Добавить села</a>
                     <a class="dropdown-item" href="/add_prepaid">Добавить prepaid страны</a>
                     <a class="dropdown-item" href="/add_postpaid">Добавить postpaid страны</a>
                     <a class="dropdown-item" href="/add_content">Добавить контент службы</a>
+                    <a class="dropdown-item" href="/add_sms">Добавить SMS-рассылки</a>
+                    <a class="dropdown-item" href="/add_crm">Добавить SR prepaid</a>
+                    <a class="dropdown-item" href="/add_crmpost">Добавить SR postpaid</a>
 
                 </div>
             </li>
         </ul>
     </div>
-        <form class="mx-auto" action="/logout" method="post">
-            <button class="btn btn-outline-dark ml-2 "  type="submit">Выйти</button>
-
-            <input type="hidden" name="_csrf" value="{{_csrf.token}}">
-        </form>
-
-
+    <form class="mx-auto" action="/logout" method="post">
+        <button class="btn btn-outline-dark ml-2 "  type="submit">Выйти</button>
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+    </form>
 </nav>
 
 <div class="container mt-5">
@@ -82,11 +92,9 @@
 
 
 
-    <form class="form-inline" method="post" action="filterAd">
-        <input class="form-control ml-2" type="text" name="filterAd" >
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+    <form class="form-inline" method="get" action="/admin">
+        <input class="form-control ml-2" type="text" name="filterAd" value="{{#filterAd}}{{filterAd}}{{/filterAd}}">
         <button type="submit" class="btn btn-outline-dark ml-2">Найти</button>
-
     </form>
 
     <div class="container mt-3">
@@ -119,9 +127,9 @@
                     <th><a href="/delete/{{id}}">Del</a></th>
                     <th><a href="/edit/{{id}}">Edit</a></th>
 
-    </tr>
-</div>
-{{/messages}}
+                </tr>
+            </div>
+        {{/messages}}
     </table>
 
 </div>

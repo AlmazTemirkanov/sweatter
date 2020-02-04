@@ -16,45 +16,37 @@ public class PrepaidController {
     @Autowired
     private PrepaidRepo prepaidRepo;
 
-    @PostMapping("filter_prepaid")
-    public String filter_prepaid(@RequestParam String filter_prepaid, Map<String, Object> model) {
-        Iterable <Prepaid> prepaid;
+
+    @GetMapping("/prepaid")
+    public String filter_prepaid(@RequestParam (required = false) String filter_prepaid, Model model) {
+        Iterable <Prepaid> prepaid =null;
         if (filter_prepaid !=null && !filter_prepaid.isEmpty()){
             prepaid = prepaidRepo.findBycountryIgnoreCaseContaining(filter_prepaid);
         } else {
-            prepaid = prepaidRepo.findAll();
+            prepaidRepo.findAll();
         }
-        model.put("prepaid", prepaid);
+        model.addAttribute("prepaid", prepaid);
+        model.addAttribute("filter_prepaid", filter_prepaid);
 
         return "prepaid";
     }
 
-    @GetMapping("/prepaid_admin")
-    public String prepaid_admin (Map<String, Object> model) {
-        Iterable <Prepaid> prepaid = prepaidRepo.findAll();
-        model.put("message", prepaid);
-        return "prepaid_admin";
-    }
 
-    @PostMapping("filter_prepaid_admin")
-    public String filter_prepaid_admin(@RequestParam String filter_prepaid_admin, Map<String, Object> model) {
-        Iterable <Prepaid> prepaid;
+
+    @GetMapping("/prepaid_admin")
+    public String filter_prepaid_admin(@RequestParam (required = false) String filter_prepaid_admin, Model model) {
+        Iterable <Prepaid> prepaid =null;
         if (filter_prepaid_admin !=null && !filter_prepaid_admin.isEmpty()){
             prepaid = prepaidRepo.findBycountryIgnoreCaseContaining(filter_prepaid_admin);
         } else {
-            prepaid = prepaidRepo.findAll();
+            prepaidRepo.findAll();
         }
-        model.put("prepaid", prepaid);
+        model.addAttribute("prepaid", prepaid);
+        model.addAttribute("filter_prepaid_admin", filter_prepaid_admin);
 
         return "prepaid_admin";
     }
 
-    @GetMapping("/filter_prepaid_admin")
-    public String filter_prepaid_admin (Map<String, Object> model) {
-        Iterable <Prepaid> prepaid = prepaidRepo.findAll();
-        model.put("message", prepaid);
-        return "prepaid_admin";
-    }
 
     @GetMapping("/delete_prepaid/{id}")
     public String delete_prepaid(@PathVariable Integer id, Map<String, Object> model) {
